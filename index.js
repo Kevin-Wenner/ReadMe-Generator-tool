@@ -51,6 +51,16 @@ const questions = [
         message:"list contributors",
     },
     {
+        type: "input",
+        name: 'questions',
+        message: 'List some frequently asked questions'
+    },
+    {
+        type: "input",
+        name: 'tests',
+        message: 'provide used tests and explain the testing process'
+    },
+    {
         type: 'list',
         name: 'license',
         message:"What makes your project stand out?",
@@ -58,7 +68,8 @@ const questions = [
         filter(temp){
             return temp
         }
-    },
+    }
+   
 ];
 
 // TODO: Create a function to write README file

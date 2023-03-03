@@ -2,11 +2,11 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   switch (license) {
-    case "MIT": return ""
+    case "MIT": return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
       break;
-    case "GNU": return ""
+    case "GNU": return "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
       break;
-    case "Apache": return ""
+    case "Apache": return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
       break;
     default: return ""
       break;
@@ -33,13 +33,14 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  return `${renderLicenseBadge(license)}gh${renderLicenseLink(license)}`
+  return `This project is licensed under the ${renderLicenseLink(license)} license`
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown({title, description, installation, contribution, usage, license} = data) {
+function generateMarkdown({title, description, installation, contribution, usage, license, questions, tests, username, email, githubRepo} = data) {
   return `
-  
+  ${renderLicenseBadge(license)}
+
   # ${title}
   
   ## Table of Content
@@ -58,8 +59,18 @@ function generateMarkdown({title, description, installation, contribution, usage
   ## Usage
   ${usage}
 
-  ## Contribution
+  ## Contributing
   ${contribution}
+
+  ## Questions
+  - [${username}](github.com/${username})
+  - ${email}
+  - [${githubRepo}](github.com/${username}/${githubRepo})
+  
+    ${questions}
+
+  ## Tests
+  ${tests}
 
   ## License
   ${renderLicenseSection(license)}
